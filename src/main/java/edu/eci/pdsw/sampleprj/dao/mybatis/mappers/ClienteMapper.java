@@ -32,4 +32,10 @@ public interface ClienteMapper {
      */
     public List<Cliente> consultarClientes();
     
+    default List<Cliente> consultarClienteGeneral(){
+        return consultarClienteGeneral(null);
+    }
+    
+    public List<Cliente> consultarClienteGeneral(@Param("idcli") Integer id);
+    
 }
