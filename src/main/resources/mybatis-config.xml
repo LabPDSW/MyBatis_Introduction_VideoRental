@@ -14,7 +14,13 @@
         <typeAlias type="edu.eci.pdsw.samples.entities.Item" alias="Item"/>
         <typeAlias type="edu.eci.pdsw.samples.entities.ItemRentado" alias="ItemRentado"/>
         <typeAlias type="edu.eci.pdsw.samples.entities.TipoItem" alias="TipoItem"/>
-    </typeAliases>	
+    </typeAliases>
+    <typeAliases>
+        <typeAlias type='edu.eci.pdsw.samples.entities.Cliente' alias='Cliente'/>
+        <typeAlias type='edu.eci.pdsw.samples.entities.Item' alias='Item'/>
+        <typeAlias type='edu.eci.pdsw.samples.entities.ItemRentado' alias='ItemRentado'/>
+        <typeAlias type='edu.eci.pdsw.samples.entities.TipoItem' alias='TipoItem'/>
+    </typeAliases>		
 
     <environments default="development">
         <environment id="development">
