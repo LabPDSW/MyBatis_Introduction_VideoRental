@@ -18,9 +18,12 @@ package edu.eci.pdsw.samples.services.client;
 
 
 
+import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ClienteMapper;
+import edu.eci.pdsw.samples.entities.Cliente;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
+import java.util.List;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -31,7 +34,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
  * @author hcadavid
  */
 public class MyBatisExample {
-
+    
     /**
      * Método que construye una fábrica de sesiones de MyBatis a partir del
      * archivo de configuración ubicado en src/main/resources
@@ -64,17 +67,15 @@ public class MyBatisExample {
 
         
         //Crear el mapper y usarlo: 
-        //ClienteMapper cm=sqlss.getMapper(ClienteMapper.class)
-        //cm...
+        ClienteMapper cm=sqlss.getMapper(ClienteMapper.class);
+        List<Cliente> lista= cm.consultarClientes();
         
-        
-        
+        for(Cliente c :lista){
+            System.out.println(c);
+        } 
         sqlss.commit();
-        
-        
         sqlss.close();
-
-        
+//        System.exit(0);
         
     }
 
