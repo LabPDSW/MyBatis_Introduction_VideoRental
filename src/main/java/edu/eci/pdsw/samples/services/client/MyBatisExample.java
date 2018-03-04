@@ -19,7 +19,10 @@ package edu.eci.pdsw.samples.services.client;
 
 
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ClienteMapper;
+import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemMapper;
 import edu.eci.pdsw.samples.entities.Cliente;
+import edu.eci.pdsw.samples.entities.Item;
+import edu.eci.pdsw.samples.entities.TipoItem;
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.SQLException;
@@ -65,14 +68,15 @@ public class MyBatisExample {
 
         SqlSession sqlss = sessionfact.openSession();
 
-        
         //Crear el mapper y usarlo: 
-        ClienteMapper cm=sqlss.getMapper(ClienteMapper.class);
-        List<Cliente> lista= cm.consultarClientes();
-        
-        for(Cliente c :lista){
-            System.out.println(c);
-        } 
+//        ClienteMapper cm=sqlss.getMapper(ClienteMapper.class);
+//        List<Cliente> lista= cm.consultarClientes();
+
+        ItemMapper im = sqlss.getMapper(ItemMapper.class);
+//        im.insertarItem(new Item(new TipoItem(2, "Juego"),7,"PES 2018","PES 2018 es un juego de futbol desarrollado por Konami.", java.sql.Date.valueOf("2017-09-12"), 3500, "DVD", "Deportes")); Agregar Item
+//        for(Cliente c :lista){
+//            System.out.println(c);
+//        }
         sqlss.commit();
         sqlss.close();
 //        System.exit(0);

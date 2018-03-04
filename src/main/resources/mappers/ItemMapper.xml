@@ -4,8 +4,8 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemMapper">
-
-
-    
-    
+    <insert id="insertarItem" parameterType="map">
+        INSERT INTO VI_ITEMS(id,nombre,descripcion,fechalanzamiento,tarifaxdia,formatorenta,genero,TIPOITEM_id)
+        VALUES (#{it.id},#{it.nombre},#{it.descripcion},#{it.fechaLanzamiento},#{it.tarifaxDia},#{it.formatoRenta},#{it.genero},#{it.tipo.id})
+    </insert>
 </mapper>

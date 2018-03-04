@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface ClienteMapper {
     
-    public Cliente consultarCliente(int id); 
+//    public Cliente consultarCliente(int id); 
     
     /**
      * Registrar un nuevo item rentado asociado al cliente identificado
@@ -30,7 +30,7 @@ public interface ClienteMapper {
      * Consultar todos los clientes
      * @return 
      */
-    public List<Cliente> consultarClientes();
+//    public List<Cliente> consultarClientes();
     
     default List<Cliente> consultarClienteGeneral(){
         return consultarClienteGeneral(null);
