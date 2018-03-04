@@ -34,8 +34,15 @@
         left join VI_ITEMRENTADO as ir on c.documento=ir.CLIENTES_documento 
         left join VI_ITEMS as i on ir.ITEMS_id=i.id 
         left join VI_TIPOITEM as ti on i.TIPOITEM_id=ti.id 
-<!--        <insert #{idcli}></insert>-->
+
+        <if test="idcli != null">
+            WHERE c.documento = #{idcli}
+        </if>
     </select>
+    
+    <insert parameterType="map" id="agregarItemRentadoACliente" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO VI_ITEMRENTADO (CLIENTES_documento,ITEMS_id,fechainiciorenta,fechafinrenta) VALUES (#{idcli},#{idi},#{fini},#{ffin})
+    </insert>
     
     <resultMap type="Cliente" id="ClienteResult" >
         <id property="documento" column="c_documento"/>

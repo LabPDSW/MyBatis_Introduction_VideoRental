@@ -16,8 +16,6 @@
  */
 package edu.eci.pdsw.samples.services.client;
 
-
-
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ClienteMapper;
 import edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemMapper;
 import edu.eci.pdsw.samples.entities.Cliente;
@@ -25,6 +23,7 @@ import edu.eci.pdsw.samples.entities.Item;
 import edu.eci.pdsw.samples.entities.TipoItem;
 import java.io.IOException;
 import java.io.InputStream;
+import java.sql.Date;
 import java.sql.SQLException;
 import java.util.List;
 import org.apache.ibatis.io.Resources;
@@ -37,7 +36,7 @@ import org.apache.ibatis.session.SqlSessionFactoryBuilder;
  * @author hcadavid
  */
 public class MyBatisExample {
-    
+
     /**
      * Método que construye una fábrica de sesiones de MyBatis a partir del
      * archivo de configuración ubicado en src/main/resources
@@ -60,8 +59,9 @@ public class MyBatisExample {
 
     /**
      * Programa principal de ejempo de uso de MyBATIS
+     *
      * @param args
-     * @throws SQLException 
+     * @throws SQLException
      */
     public static void main(String args[]) throws SQLException {
         SqlSessionFactory sessionfact = getSqlSessionFactory();
@@ -69,19 +69,21 @@ public class MyBatisExample {
         SqlSession sqlss = sessionfact.openSession();
 
         //Crear el mapper y usarlo: 
-//        ClienteMapper cm=sqlss.getMapper(ClienteMapper.class);
-//        List<Cliente> lista= cm.consultarClientes();
-
         ItemMapper im = sqlss.getMapper(ItemMapper.class);
-//        im.insertarItem(new Item(new TipoItem(2, "Juego"),7,"PES 2018","PES 2018 es un juego de futbol desarrollado por Konami.", java.sql.Date.valueOf("2017-09-12"), 3500, "DVD", "Deportes")); Agregar Item
-//        for(Cliente c :lista){
-//            System.out.println(c);
-//        }
+        ClienteMapper cm = sqlss.getMapper(ClienteMapper.class);
+        List<Cliente> lista = cm.consultarClientes();
+        int documetoClinte = 2104835;
+        Cliente cliente = cm.consultarCliente(documetoClinte);
+        for (Cliente c : lista) {
+            System.out.println(c);
+        }
+        System.out.println("-------------------------------\nConsultando: " + documetoClinte + "\n" + cliente);
+        
+//        cm.agregarItemRentadoACliente(12345, 2104835, java.sql.Date.valueOf("2018-03-10"), java.sql.Date.valueOf("2018-03-20")); //inserta ItemRentado{id=1026585724, item=null, fechainiciorenta=2017-09-12, fechafinrenta=2017-09-12}]}
         sqlss.commit();
         sqlss.close();
 //        System.exit(0);
-        
-    }
 
+    }
 
 }

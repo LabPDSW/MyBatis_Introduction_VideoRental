@@ -11,7 +11,9 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface ClienteMapper {
     
-//    public Cliente consultarCliente(int id); 
+    default Cliente consultarCliente(Integer id){
+        return consultarClienteGeneral(id).get(0);
+    }
     
     /**
      * Registrar un nuevo item rentado asociado al cliente identificado
@@ -21,18 +23,17 @@ public interface ClienteMapper {
      * @param fechainicio
      * @param fechafin 
      */
-    public void agregarItemRentadoACliente(int id, 
-            int idit, 
-            Date fechainicio,
-            Date fechafin);
+    public void agregarItemRentadoACliente(@Param("idi")int id, 
+            @Param("idcli") int idit, 
+            @Param("fini") Date fechainicio,
+            @Param("ffin") Date fechafin);
 
     /**
      * Consultar todos los clientes
      * @return 
      */
-//    public List<Cliente> consultarClientes();
-    
-    default List<Cliente> consultarClienteGeneral(){
+
+    default List<Cliente> consultarClientes(){
         return consultarClienteGeneral(null);
     }
     
