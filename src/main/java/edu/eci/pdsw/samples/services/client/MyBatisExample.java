@@ -77,9 +77,16 @@ public class MyBatisExample {
         for (Cliente c : lista) {
             System.out.println(c);
         }
-        System.out.println("-------------------------------\nConsultando: " + documetoClinte + "\n" + cliente);
-        
 //        cm.agregarItemRentadoACliente(12345, 2104835, java.sql.Date.valueOf("2018-03-10"), java.sql.Date.valueOf("2018-03-20")); //inserta ItemRentado{id=1026585724, item=null, fechainiciorenta=2017-09-12, fechafinrenta=2017-09-12}]}
+        System.out.println("-------------------------------\nConsultando: " + documetoClinte + "\n" + cliente);
+        System.out.println("-------------------------------\nConsulta de items:");
+        int idItem = 7;
+        List<Item> items = im.consultarItems();
+        Item item = im.consultarItem(idItem);
+        for (Item i : items) {
+            System.out.println(i);
+        }
+        System.out.println("-------------------------------\nConsultando item: " + idItem + "\n" + item);
         sqlss.commit();
         sqlss.close();
 //        System.exit(0);

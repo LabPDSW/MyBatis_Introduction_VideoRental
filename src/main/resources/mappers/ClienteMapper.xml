@@ -58,18 +58,7 @@
         <id property="id" column="ir_id"/>
         <result property="fechainiciorenta" column="ir_fechainiciorenta"/>
         <result property="fechafinrenta" column="ir_fechafinrenta"/>
-        <association property="item" javaType="Item"/>
-    </resultMap>
-    
-    <resultMap type="Item" id="ItemResult">
-        <id property="id" column="i_id"/>
-        <result property="nombre" column="i_nombre" />
-        <result property="descripcion" column="i_descripcion"/>
-        <result property="fechaLanzamiento" column="i_fechalanzamiento"/>
-        <result property="tarifaxDia" column="i_tarifaxdia"/>
-        <result property="formatoRenta" column="i_formatorenta"/>
-        <result property="genero" column="i_genero"/>
-        <association property="tipo" javaType="TipoItem"/>
+        <association property="item" javaType="Item" resultMap='edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemMapper.ItemResult'/>
     </resultMap>
     
     <resultMap type="TipoItem" id="tipoItemResult">

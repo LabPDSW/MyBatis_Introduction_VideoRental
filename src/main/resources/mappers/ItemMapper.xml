@@ -4,8 +4,40 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
 <mapper namespace="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ItemMapper">
+    <select parameterType="map" id="consultarItemGeneral" resultMap="ItemResult">
+        SELECT 
+            i.id AS i_id,
+            i.nombre AS i_nombre,
+            i.descripcion AS i_descripcion,
+            i.fechalanzamiento AS i_fechalanzamiento,
+            i.tarifaxdia AS i_tarifaxdia,
+            i.formatorenta AS i_formatorenta,
+            i.genero AS i_genero,
+        
+            ti.id AS ti_id,
+            ti.descripcion AS ti_descripcion 
+        
+	FROM VI_ITEMS AS i 
+		JOIN VI_TIPOITEM AS ti ON (i.TIPOITEM_id=ti.id)
+        
+        <if test="iid != null">
+            WHERE i.id = #{iid}
+        </if>
+    </select>
+    
     <insert id="insertarItem" parameterType="map">
         INSERT INTO VI_ITEMS(id,nombre,descripcion,fechalanzamiento,tarifaxdia,formatorenta,genero,TIPOITEM_id)
         VALUES (#{it.id},#{it.nombre},#{it.descripcion},#{it.fechaLanzamiento},#{it.tarifaxDia},#{it.formatoRenta},#{it.genero},#{it.tipo.id})
     </insert>
+    
+    <resultMap type="Item" id="ItemResult">
+        <id property="id" column="i_id"/>
+        <result property="nombre" column="i_nombre" />
+        <result property="descripcion" column="i_descripcion"/>
+        <result property="fechaLanzamiento" column="i_fechalanzamiento"/>
+        <result property="tarifaxDia" column="i_tarifaxdia"/>
+        <result property="formatoRenta" column="i_formatorenta"/>
+        <result property="genero" column="i_genero"/>
+        <association property="tipo" javaType="TipoItem" resultMap="edu.eci.pdsw.sampleprj.dao.mybatis.mappers.ClienteMapper.tipoItemResult"/>
+    </resultMap>
 </mapper>
