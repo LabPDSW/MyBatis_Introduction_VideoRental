@@ -77,6 +77,7 @@ public class MyBatisExample {
         for (Cliente c : lista) {
             System.out.println(c);
         }
+//        im.insertarItem(new Item(new TipoItem(2, "Juego"),7,"PES 2018","PES 2018 es un juego de futbol desarrollado por Konami.", java.sql.Date.valueOf("2017-09-12"), 3500, "DVD", "Deportes"));// Agregar Item
 //        cm.agregarItemRentadoACliente(12345, 2104835, java.sql.Date.valueOf("2018-03-10"), java.sql.Date.valueOf("2018-03-20")); //inserta ItemRentado{id=1026585724, item=null, fechainiciorenta=2017-09-12, fechafinrenta=2017-09-12}]}
         System.out.println("-------------------------------\nConsultando: " + documetoClinte + "\n" + cliente);
         System.out.println("-------------------------------\nConsulta de items:");
